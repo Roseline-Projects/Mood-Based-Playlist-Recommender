@@ -1,0 +1,15 @@
+.mood-btn {
+  padding: 12px 24px;
+  margin: 10px;
+  background-color: #1db954;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.mood-btn:hover {
+  background-color: #17a347;
+}
