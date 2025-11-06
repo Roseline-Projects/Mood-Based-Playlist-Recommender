@@ -1,4 +1,3 @@
-// backend/utils/spotifyAuth.js
 import axios from "axios";
 import dotenv from "dotenv";
 
@@ -15,30 +14,39 @@ export async function getSpotifyToken() {
 
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-  const tokenUrl = "https://accounts.spotify.com/api/token";
+  
+  const tokenUrl = "https://accounts.spotify.com/api/token"; 
 
-  const authHeader = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
+  // Send credentials and grant type in the body
+  const bodyParams = {
+    grant_type: "client_credentials",
+    client_id: clientId,
+    client_secret: clientSecret,
+  };
 
   try {
     const response = await axios.post(
       tokenUrl,
-      new URLSearchParams({ grant_type: "client_credentials" }),
+      // The second argument is the HTTP Body, formatted as URLSearchParams
+      new URLSearchParams(bodyParams),
       {
         headers: {
-          Authorization: `Basic ${authHeader}`,
+          // Authentication method
           "Content-Type": "application/x-www-form-urlencoded",
         },
       }
     );
 
     spotifyToken = response.data.access_token;
-    tokenExpirationTime = Date.now() + response.data.expires_in * 1000; // store expiration time
+    tokenExpirationTime = Date.now() + response.data.expires_in * 1000;
 
-    console.log("✅ Spotify token retrieved successfully");
+    console.log("Spotify token retrieved successfully");
     return spotifyToken;
   } catch (error) {
-    console.error("❌ Error retrieving Spotify token:", error.response?.data || error.message);
+    console.error("Error retrieving Spotify token:", error.response?.data || error.message);
+    if (error.response?.status === 400 || error.response?.status === 401) {
+        console.error("-> Authentication failed. Check your SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET in your backend .env file.");
+    }
     return null;
   }
 }
-

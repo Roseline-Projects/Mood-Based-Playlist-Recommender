@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api", // your Express backend
+  baseURL: "http://localhost:5001/api", // Express backend
 });
 
 export const getPlaylists = () => API.get("/playlists");

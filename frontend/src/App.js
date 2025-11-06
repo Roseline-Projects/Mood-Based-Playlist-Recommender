@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MoodSelectionPage />} />
-        <Route path="/playlist" element={<PlaylistPage />} />
+        <Route path="/playlist/:mood" element={<PlaylistPage />} />
       </Routes>
     </Router>
   );
