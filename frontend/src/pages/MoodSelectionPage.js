@@ -10,6 +10,11 @@ const moods = ["Chill", "Focus", "Energetic", "Happy", "Sad"];
 function MoodSelectionPage() {
   const navigate = useNavigate();
   const [userInput, setUserInput] = useState("");
+  const [detectedMood, setDetectedMood] = useState(null);
+  
+  const handleChange = (e) => {
+    setUserInput(e.target.value);
+  };
 
   const handleMoodClick = async (mood) => {
     console.log("Selected mood:", mood);
@@ -18,39 +23,37 @@ function MoodSelectionPage() {
     navigate(`/playlist/${mood.toLowerCase()}`);
   };
 
-  const handleSearchClick = async (e) => {
-    console.log(e.target.value)
-
-    const userText = e.target.value;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     // pattern matching
-    // create an object for storing matches
+    // create frequency table
     const moodData = {} 
     for (const key of moods) {
       moodData[key.toLowerCase()] = 0;
     }
 
     // check for matches
-    //for each mood, 
-      //count the number of dictionary entries that appear in the string
+    // for each mood, 
+      // count the number of dictionary entries that appear in the string
     Object.keys(moodData).forEach(mood => {
-      console.log(mood)
       const synonyms = moodDictionary[mood]
-      console.log(synonyms)
       synonyms.forEach((word) => {
-        if (userText.includes(word))
+        if (userInput.includes(word))
           moodData[mood] +=1;
       })
     });
 
-    console.log(moodData)
-
+    // find highest count
     const overallMood = Object.entries(moodData).reduce(([mood, count], accumulator) => (
       count > accumulator[1] ? [mood, count] : accumulator
     ), ["", -Infinity])
 
     console.log(overallMood)
-    //navigate(`/playlist/${overallMood[0].toLowerCase()}`);
+
+    // make api request and update UI
+    setDetectedMood(overallMood[0])
+    navigate(`/playlist/${overallMood[0]}`);
   }
 
   return (
@@ -68,12 +71,40 @@ function MoodSelectionPage() {
         ))}
       </div>
         <div>
-          <input
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
-            style={{ padding: "1rem 2rem" }}
-           />
-           <button onClick={handleSearchClick}>Go</button>
+          <form>
+            <div style={{ marginTop: "1rem" }}>
+              <input
+                type="text"
+                placeholder="Type how you feel..."
+                value={userInput}
+                onChange={handleChange}
+                style={{
+                  padding: "10px",
+                  width: "250px",
+                  borderRadius: "8px",
+                  border: "1px solid #ccc",
+                  fontSize: "1rem"
+                }}
+              />
+              <button
+                onClick={handleSubmit}
+                style={{
+                marginLeft: "10px",
+                padding: "10px 20px",
+                borderRadius: "8px",
+                border: "none",
+                backgroundColor: "#4CAF50",
+                color: "white",
+                cursor: "pointer",
+                fontSize: "1rem",
+              }}>Submit</button>
+            </div>
+          </form>
+          {detectedMood && (
+        <p style={{ marginTop: "20px", fontSize: "1.2rem"}}>
+          Detected Mood: <strong>{detectedMood}</strong>
+        </p>
+      )}
         </div>
     </div>
   );
