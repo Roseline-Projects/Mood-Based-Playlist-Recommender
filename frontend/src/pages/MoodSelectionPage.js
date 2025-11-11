@@ -1,111 +1,81 @@
+// frontend/src/pages/MoodSelectionPage.js
+
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import MoodButton from "../components/MoodButton";
+import { useNavigate } from "react-router-dom";
+import MoodButton from "../components/MoodButton"; // This component will be styled by the CSS
 import { moodDictionary } from "./constants";
-// import { searchPlaylistsByMood } from "../services/spotify";
+import './MoodSelectionPage.css'; // <-- 1. IMPORT YOUR NEW CSS FILE
 
 const moods = ["Chill", "Focus", "Energetic", "Happy", "Sad"];
-
 
 function MoodSelectionPage() {
   const navigate = useNavigate();
   const [userInput, setUserInput] = useState("");
   const [detectedMood, setDetectedMood] = useState(null);
-  
+
   const handleChange = (e) => {
     setUserInput(e.target.value);
   };
 
   const handleMoodClick = async (mood) => {
     console.log("Selected mood:", mood);
-    
-    // Navigate to the new dynamic URL with the mood
     navigate(`/playlist/${mood.toLowerCase()}`);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // pattern matching
-    // create frequency table
-    const moodData = {} 
+    const moodData = {};
     for (const key of moods) {
       moodData[key.toLowerCase()] = 0;
     }
-
-    // check for matches
-    // for each mood, 
-      // count the number of dictionary entries that appear in the string
     Object.keys(moodData).forEach(mood => {
-      const synonyms = moodDictionary[mood]
+      const synonyms = moodDictionary[mood];
       synonyms.forEach((word) => {
-        if (userInput.includes(word))
-          moodData[mood] +=1;
-      })
+        if (userInput.includes(word)) moodData[mood] += 1;
+      });
     });
-
-    // find highest count
     const overallMood = Object.entries(moodData).reduce(([mood, count], accumulator) => (
       count > accumulator[1] ? [mood, count] : accumulator
-    ), ["", -Infinity])
+    ), ["", -Infinity]);
 
-    console.log(overallMood)
-
-    // make api request and update UI
-    setDetectedMood(overallMood[0])
+    setDetectedMood(overallMood[0]);
     navigate(`/playlist/${overallMood[0]}`);
-  }
+  };
 
   return (
-    <div style={{ textAlign: "center", paddingTop: "50px" }}>
-      <h2>🎶 Choose Your Mood 🎶</h2>
-      <div style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: "1rem",
-          marginTop: "2rem"
-        }}>
+    // 2. Use classNames instead of inline styles
+    <div className="mood-selection-container">
+      <h2 className="mood-title">🎶 Choose Your Mood 🎶</h2>
+      <div className="mood-buttons-grid">
         {moods.map((mood) => (
+          // The CSS will style the <button> element inside your MoodButton component
           <MoodButton key={mood} label={mood} onClick={handleMoodClick} />
         ))}
       </div>
-        <div>
-          <form>
-            <div style={{ marginTop: "1rem" }}>
-              <input
-                type="text"
-                placeholder="Type how you feel..."
-                value={userInput}
-                onChange={handleChange}
-                style={{
-                  padding: "10px",
-                  width: "250px",
-                  borderRadius: "8px",
-                  border: "1px solid #ccc",
-                  fontSize: "1rem"
-                }}
-              />
-              <button
-                onClick={handleSubmit}
-                style={{
-                marginLeft: "10px",
-                padding: "10px 20px",
-                borderRadius: "8px",
-                border: "none",
-                backgroundColor: "#4CAF50",
-                color: "white",
-                cursor: "pointer",
-                fontSize: "1rem",
-              }}>Submit</button>
-            </div>
-          </form>
-          {detectedMood && (
-        <p style={{ marginTop: "20px", fontSize: "1.2rem"}}>
-          Detected Mood: <strong>{detectedMood}</strong>
-        </p>
-      )}
-        </div>
+      <div>
+        <form className="mood-form" onSubmit={handleSubmit}>
+          <div className="mood-input-section">
+            <input
+              type="text"
+              placeholder="What mood are you in?"
+              value={userInput}
+              onChange={handleChange}
+              className="mood-text-input" // 3. Replaced inline style
+            />
+            <button
+              type="submit" // 4. Use type="submit" for forms
+              className="suggest-playlist-button" // 5. This class fixes the green button
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+        {detectedMood && (
+          <p className="detected-mood">
+            Detected Mood: <strong>{detectedMood}</strong>
+          </p>
+        )}
+      </div>
     </div>
   );
 }

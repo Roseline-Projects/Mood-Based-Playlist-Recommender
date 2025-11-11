@@ -5,6 +5,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image: linear-gradient(to right top, #6a00f4, #8928ed, #a14ae7, #b56ae0, #c355ff);
+
+    /* Ensures the gradient always covers the full screen height */
+    min-height: 100vh;
+
+    /* Makes the gradient stay in place when you scroll */
+    background-attachment: fixed;
+
+    /* Prevents the gradient from repeating if content is very small */
+    background-repeat: no-repeat;
+
+    /* This is crucial for readability on a dark background */
+    color: #f4f4f4;
 }
 
 code {

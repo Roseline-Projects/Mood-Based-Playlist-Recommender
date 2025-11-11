@@ -1,0 +1,134 @@
+ /* frontend/src/pages/PlaylistPage.css */
+
+ .playlist-page-container {
+   text-align: center;
+   padding-top: 3rem;
+   padding-bottom: 3rem;
+ }
+
+ .playlist-page-title {
+   color: #f4f4f4;
+   text-transform: uppercase;
+ }
+
+ /* Message styles */
+ .loading-message,
+ .no-results-message {
+   color: #f4f4f4;
+ }
+ .error-message {
+   color: #ff8080; /* Light red for dark background */
+ }
+
+ .playlist-grid {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 1.5rem;
+   margin-top: 2rem;
+ }
+
+ /* Playlist Card - Styled with Glassmorphism */
+ .playlist-card {
+   background-color: rgba(108, 41, 179, 0.4);
+   backdrop-filter: blur(10px);
+   border: 1px solid rgba(255, 255, 255, 0.18);
+   border-radius: 12px;
+   padding: 1rem;
+   width: 200px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+ }
+
+ .playlist-card:hover {
+   transform: scale(1.05);
+   border-color: #a346e0;
+   box-shadow: 0 0 15px #a346e0, 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+ }
+
+ /* This REPLACES the green box shadow */
+ .playlist-card.selected {
+   border-color: #c355ff;
+   box-shadow: 0 0 20px #c355ff;
+   transform: scale(1.05);
+ }
+
+ .playlist-image {
+   width: 100%;
+   border-radius: 8px;
+ }
+
+ .playlist-name {
+   color: #f4f4f4;
+   margin-top: 0.75rem;
+   margin-bottom: 0.5rem;
+   height: 40px; /* Helps align titles */
+   overflow: hidden;
+ }
+
+ /* This REPLACES the green link */
+ .spotify-link {
+   font-size: 0.8rem;
+   color: #e0aaff; /* Light purple */
+   text-decoration: none;
+   transition: color 0.2s;
+ }
+
+ .spotify-link:hover {
+   text-decoration: underline;
+   color: #fff;
+ }
+
+
+ /* --- Tracks Section Styling --- */
+
+ /* This REPLACES the #222 background */
+ .tracks-section {
+   background-color: rgba(108, 41, 179, 0.4);
+   border-radius: 10px;
+   padding: 2rem;
+   max-width: 800px;
+   margin: 4rem auto;
+   text-align: left;
+   border: 1px solid rgba(255, 255, 255, 0.18);
+ }
+
+ /* This REPLACES the green title */
+ .tracks-title {
+   color: #e0aaff;
+   text-align: center;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+   padding-bottom: 15px;
+   margin-top: 0;
+ }
+
+ .tracks-loading {
+   text-align: center;
+ }
+ .tracks-error {
+   color: #ff8080;
+   text-align: center;
+ }
+
+ .tracks-list {
+   list-style-type: none;
+   padding: 0;
+ }
+
+ .track-item {
+   padding: 12px 0;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+ }
+
+ .track-item:last-child {
+   border-bottom: none;
+ }
+
+ .track-item strong {
+   color: #f4f4f4;
+ }
+
+ .track-item em {
+   color: #ccc;
+ }
