@@ -34,9 +34,10 @@ function MoodSelectionPage() {
         if (userInput.includes(word)) moodData[mood] += 1;
       });
     });
-    const overallMood = Object.entries(moodData).reduce(([mood, count], accumulator) => (
-      count > accumulator[1] ? [mood, count] : accumulator
-    ), ["", -Infinity]);
+    const overallMood = Object.entries(moodData).reduce(
+      ([currentMood, currentCount], [mood, count]) => (count > currentCount ? [mood, count] : [currentMood, currentCount]),
+      ["chill", 0]
+    );
 
     setDetectedMood(overallMood[0]);
     navigate(`/playlist/${overallMood[0]}`);
