@@ -8,13 +8,15 @@ import './App.css';
 
 function App() {
   return (
-    // YOU MUST HAVE ONE PARENT WRAPPER LIKE THIS:
+    // Parent wrapper:
     <div className="App">
 
-      {/* Your fixed logo */}
-      <img src={logo} className="app-logo-fixed" alt="Moodify Logo" />
+      {/* Logo wrapped in an anchor tag to navigate to the home page */}
+      <a href="/">
+        <img src={logo} className="app-logo-fixed" alt="Moodify Logo" />
+      </a>
 
-      {/* Your Router for all the pages */}
+      {/*Router for all the pages */}
       <Router>
         <Routes>
           <Route path="/" element={<MoodSelectionPage />} />

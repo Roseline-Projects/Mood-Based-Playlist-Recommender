@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MoodButton from "../components/MoodButton"; // This component will be styled by the CSS
+import MoodButton from "../components/MoodButton";
 import { moodDictionary } from "./constants";
-import './MoodSelectionPage.css'; // <-- 1. IMPORT YOUR NEW CSS FILE
+import './MoodSelectionPage.css';
 
 const moods = ["Chill", "Focus", "Energetic", "Happy", "Sad"];
 
@@ -44,12 +44,11 @@ function MoodSelectionPage() {
   };
 
   return (
-    // 2. Use classNames instead of inline styles
+    // classNames instead of inline styles
     <div className="mood-selection-container">
       <h2 className="mood-title">🎶 Choose Your Mood 🎶</h2>
       <div className="mood-buttons-grid">
         {moods.map((mood) => (
-          // The CSS will style the <button> element inside your MoodButton component
           <MoodButton key={mood} label={mood} onClick={handleMoodClick} />
         ))}
       </div>
@@ -61,11 +60,11 @@ function MoodSelectionPage() {
               placeholder="What mood are you in?"
               value={userInput}
               onChange={handleChange}
-              className="mood-text-input" // 3. Replaced inline style
+              className="mood-text-input"
             />
             <button
-              type="submit" // 4. Use type="submit" for forms
-              className="suggest-playlist-button" // 5. This class fixes the green button
+              type="submit"
+              className="suggest-playlist-button"
             >
               Submit
             </button>

@@ -11,13 +11,12 @@
    text-transform: uppercase;
  }
 
- /* Message styles */
  .loading-message,
  .no-results-message {
    color: #f4f4f4;
  }
  .error-message {
-   color: #ff8080; /* Light red for dark background */
+   color: #ff8080;
  }
 
  .playlist-grid {
@@ -28,7 +27,7 @@
    margin-top: 2rem;
  }
 
- /* Playlist Card - Styled with Glassmorphism */
+ /* Playlist Card */
  .playlist-card {
    background-color: rgba(108, 41, 179, 0.4);
    backdrop-filter: blur(10px);
@@ -47,7 +46,6 @@
    box-shadow: 0 0 15px #a346e0, 0 8px 32px 0 rgba(0, 0, 0, 0.37);
  }
 
- /* This REPLACES the green box shadow */
  .playlist-card.selected {
    border-color: #c355ff;
    box-shadow: 0 0 20px #c355ff;
@@ -63,14 +61,14 @@
    color: #f4f4f4;
    margin-top: 0.75rem;
    margin-bottom: 0.5rem;
-   height: 40px; /* Helps align titles */
+   height: 40px;
    overflow: hidden;
  }
 
- /* This REPLACES the green link */
+ 
  .spotify-link {
    font-size: 0.8rem;
-   color: #e0aaff; /* Light purple */
+   color: #e0aaff;
    text-decoration: none;
    transition: color 0.2s;
  }
@@ -81,9 +79,8 @@
  }
 
 
- /* --- Tracks Section Styling --- */
+ /* Tracks Section Styling */
 
- /* This REPLACES the #222 background */
  .tracks-section {
    background-color: rgba(108, 41, 179, 0.4);
    border-radius: 10px;
@@ -94,7 +91,6 @@
    border: 1px solid rgba(255, 255, 255, 0.18);
  }
 
- /* This REPLACES the green title */
  .tracks-title {
    color: #e0aaff;
    text-align: center;

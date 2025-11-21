@@ -1,8 +1,6 @@
 /* frontend/src/pages/MoodSelectionPage.css */
 
-/* This is the main card container from your image */
 .mood-selection-container {
-  /* This creates the "glass" effect */
   background-color: rgba(108, 41, 179, 0.4);
   backdrop-filter: blur(10px);
 
@@ -24,16 +22,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem; /* Increased gap */
+  gap: 1.5rem;
   margin-top: 2rem;
 }
 
-/* This styles the <button> tag that your <MoodButton> component renders.
-  This creates the purple highlighted outline effect.
-*/
 .mood-buttons-grid button {
   background-color: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.3); /* Default border */
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   color: #f4f4f4;
   font-size: 1rem;
@@ -44,15 +39,12 @@
   backdrop-filter: blur(5px);
 }
 
-/* THIS IS THE HIGHLIGHTED OUTLINE FROM YOUR IMAGE */
 .mood-buttons-grid button:hover {
-  border-color: #a346e0; /* Vibrant purple border */
-  box-shadow: 0 0 15px #a346e0; /* Purple glow */
-  background-color: rgba(163, 70, 224, 0.1); /* Faint purple fill */
+  border-color: #a346e0; 
+  box-shadow: 0 0 15px #a346e0;
+  background-color: rgba(163, 70, 224, 0.1);
   transform: translateY(-3px);
 }
-
-/* --- Form and Input Styling --- */
 
 .mood-form {
   margin-top: 3rem;
@@ -65,7 +57,6 @@
   margin-top: 1rem;
 }
 
-/* This styles the text input */
 .mood-text-input {
   flex-grow: 1;
   max-width: 400px;
@@ -88,7 +79,6 @@
   box-shadow: 0 0 8px rgba(163, 70, 224, 0.5);
 }
 
-/* This is the purple submit button (REMOVES THE GREEN) */
 .suggest-playlist-button {
   background-image: linear-gradient(45deg, #a346e0, #c355ff);
   border: none;
@@ -109,5 +99,5 @@
 .detected-mood {
   margin-top: 20px;
   font-size: 1.2rem;
-  color: #e0aaff; /* Light purple */
+  color: #e0aaff;
 }

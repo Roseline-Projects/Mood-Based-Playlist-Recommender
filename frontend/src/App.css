@@ -10,14 +10,13 @@
 
   position: absolute;
 
-  /* Positions it 20px from the top */
+  /* 20px from the top */
   top: 20px;
 
-  /* Positions it 20px from the left */
+  /* 20px from the left */
   left: 20px;
 
-  /* Adjust the size so it's not too big */
   height: 120px;
-  width: auto; /* Maintains aspect ratio */
+  width: auto;
 
 }

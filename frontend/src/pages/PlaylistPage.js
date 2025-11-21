@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { searchPlaylistsByMood, getPlaylistTracks } from "../services/spotify";
-import './PlaylistPage.css'; // <-- 1. IMPORT YOUR NEW CSS FILE
+import './PlaylistPage.css'; // import new css file
 
 function PlaylistPage() {
   const [playlists, setPlaylists] = useState([]);
@@ -69,7 +69,7 @@ function PlaylistPage() {
   }
 
   return (
-    // 2. Use classNames for all styling
+    // classNames for all styling
     <div className="playlist-page-container">
       <h1 className="playlist-page-title">{mood?.toUpperCase()} Playlists 🎶</h1>
       <div className="playlist-grid">
@@ -77,14 +77,14 @@ function PlaylistPage() {
           if (!playlist || !playlist.id || !playlist.images || playlist.images.length === 0) {
             return null;
           }
-          // 3. Use classes to handle selection instead of inline shadow
+          // classes to handle selection instead of inline shadow
           const isSelected = selectedPlaylist === playlist.name;
 
           return (
             <div
               key={playlist.id}
               onClick={() => handlePlaylistClick(playlist.id, playlist.name)}
-              className={isSelected ? 'playlist-card selected' : 'playlist-card'} // 4. Dynamic class
+              className={isSelected ? 'playlist-card selected' : 'playlist-card'}
             >
               <img
                 src={playlist.images[0].url || 'placeholder.png'}
@@ -98,7 +98,7 @@ function PlaylistPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="spotify-link" // 5. This class fixes the green link
+                  className="spotify-link"
                 >
                   Open on Spotify
                 </a>

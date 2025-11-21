@@ -10,7 +10,7 @@ export const getPlaylists = async (req, res) => {
   }
 };
 
-// POST create new playlist
+// Post create new playlist
 export const createPlaylist = async (req, res) => {
   const { mood, name, spotifyId, tracks } = req.body;
   try {
