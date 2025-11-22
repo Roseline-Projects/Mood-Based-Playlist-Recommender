@@ -1,6 +1,6 @@
 // frontend/src/pages/PlaylistPage.js
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { searchPlaylistsByMood, getPlaylistTracks } from "../services/spotify";
 import './PlaylistPage.css'; // import new css file

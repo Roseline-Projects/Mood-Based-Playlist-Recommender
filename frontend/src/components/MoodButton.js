@@ -1,4 +1,3 @@
-import React from "react";
 import "./../styles/buttons.css";
 
 const MoodButton = ({ label, onClick }) => {
