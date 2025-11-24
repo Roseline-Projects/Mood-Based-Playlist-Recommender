@@ -1,4 +1,5 @@
 // frontend/src/pages/MoodSelectionPage.js
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MoodButton from "../components/MoodButton";
 import { moodDictionary } from "./constants";
